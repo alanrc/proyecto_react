@@ -1,4 +1,4 @@
-// let React = require('react')
+
 import React from 'react'
 
 class Hola extends React.Component {
@@ -8,4 +8,3 @@ class Hola extends React.Component {
 	}
 }
 
- export default Hola
