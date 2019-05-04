@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Componentes Web con JQuery</title>
+	<!--  Componente facybox  -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" /> -->
+	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+	<!--  END Componente facybox  -->
+</head>
+<body>
+	<h1>Componentes web con JQuery</h1>
+	<!--  Componente JQuery Cycle   -->
+	<!-- <div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="true" data-cycle-speed="200"> -->
+	<!-- <div id="slider">
+		<img src="http://malsup.github.io/images/p1.jpg">
+		<img src="http://malsup.github.io/images/p2.jpg">
+		<img src="http://malsup.github.io/images/p3.jpg">
+		<img src="http://malsup.github.io/images/p4.jpg">
+	</div>	 -->
+	<!--  END Componente JQuery Cycle   -->
+
+	<!--  componente fancybox  -->
+	<div id="slider">
+		<a href="http://malsup.github.io/images/p1.jpg"><img src="http://malsup.github.io/images/p1.jpg" width="100"></a>
+		<a href="http://malsup.github.io/images/p2.jpg"><img src="http://malsup.github.io/images/p2.jpg" width="100"></a>
+		<a href="http://malsup.github.io/images/p3.jpg"><img src="http://malsup.github.io/images/p3.jpg" width="100"></a>
+		<a href="http://malsup.github.io/images/p4.jpg"><img src="http://malsup.github.io/images/p4.jpg" width="100"></a>
+	</div>
+	<!--  END componente fancybox  -->
+
+		
+
+
+	
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/jquery.cycle2.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+	<script>
+		$(document).ready(function(){
+			$('#slider').cycle({
+				speed: 600,
+				fx: 'scrollHorz'
+			});
+			$('#slider a').fancybox({
+				loop: true
+			})
+		})
+	</script>
+</body>
+</html>
