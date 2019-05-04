@@ -11,8 +11,8 @@ let hola = class Hola extends React.Component {
 /////// ReactDOM.render(COMPONENTE, AREA)
 // let app = document.querySelector("#app")
 // let saludo = React.createElement(hola, {nombre: "React !!!!"})
-
 // ReactDOM.render(saludo, app)
+//////////////////////////////////////// es igual de abajo
 
 ReactDOM.render(
 	React.createElement(hola, {nombre:"React...."}),
