@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import slugify from '../helpers/String'
 
 // class Menu extends React.Component
 class Menu extends Component {
@@ -19,16 +20,23 @@ class Items extends Component {
 	constructor() {
 		super()
 		this.state = {
-			categories : null
+			categories : [],
+			loaded : false
 		}
 	}
 
 	componentDidMount() {
+
+		console.log("estos son links abajo " )
+		console.log(...this.props.links)
+		
 		this.setState({
-			categories : new Set( this.props.links.map(link => link.categoria) )
+			categories : [ ...new Set( this.props.links.map(link => link.Categoria) ) ],
+			loaded : true
 		})
 	}
 
+	/*
 	slugify(string) { // -----   Convertir texto a URL Friendly   ------
 		const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;'
 		const b = 'aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------'
@@ -42,18 +50,23 @@ class Items extends Component {
 			.replace(/--+/g, '-') // Replace multiple - with single -
 			.replace(/^-+/, '') // Trim - from start of text
 			.replace(/-+$/, '') // Trim - from end of text
-	}
+	} */
 
 	render() {
 		
 		console.log(this.state.categories)
 
-		return this.props.links.map(
-			(link, index) =>
-			<li className="nav-item" key={index}>
-				<a className="nav-link" href={this.slugify(link.categoria)}>{link.categoria}</a>
-			</li>
-		)
+		if (!this.state.loaded) {
+			return <li>Cargando..</li>
+		} else {
+			console.log("Hay datos ... el estado esta cargado :)")
+			return this.state.categories.map(
+				(link, index) =>
+				<li className="nav-item" key={index}>
+					<a className="nav-link" href={slugify(link)}>{link}</a>
+				</li>
+			)
+		}
 	}
 }
 
