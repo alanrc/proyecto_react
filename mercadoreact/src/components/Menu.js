@@ -27,8 +27,8 @@ class Items extends Component {
 
 	componentDidMount() {
 
-		console.log("estos son links abajo " )
-		console.log(...this.props.links)
+		// console.log("estos son links abajo " )
+		// console.log(...this.props.links)
 		
 		this.setState({
 			categories : [ ...new Set( this.props.links.map(link => link.Categoria) ) ],
@@ -54,12 +54,12 @@ class Items extends Component {
 
 	render() {
 		
-		console.log(this.state.categories)
+		// console.log(this.state.categories)
 
 		if (!this.state.loaded) {
 			return <li>Cargando..</li>
 		} else {
-			console.log("Hay datos ... el estado esta cargado :)")
+			// console.log("Hay datos ... el estado esta cargado :)")
 			return this.state.categories.map(
 				(link, index) =>
 				<li className="nav-item" key={index}>
