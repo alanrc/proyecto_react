@@ -28,7 +28,8 @@ class App extends React.Component {
 			slogan : "Mucho más que JavaScript",
 			products : [],
 			loaded : false
-		}
+        }
+        this.actualizarEstado = this.actualizarEstado.bind(this)
 	}
 
 	componentWillMount() {
@@ -42,27 +43,51 @@ class App extends React.Component {
 		}) */
 
 		/* Datos Asincronicos obtenidos mediante un modulo Helper ...*/
-		API.getData("https://api.myjson.com/bins/fb377").then((productos) => {
+		API.getData("https://api.myjson.com/bins/dcg2p").then((productos) => {
 			this.setState({ products : productos, loaded : true })
 		})
-	}
+    }
+    
+    // Metodos
+    actualizarEstado(theProduct, borrar = false) {
+		// 0) VAriable comun
+		let nuevo = []
 
-	// Metodo para editar Producto
-	editarProducto() {
-		console.log('Editare el producto #')
-		console.log(this)
-		// console.log(this.state.products[13])
-	}
+		// 1) Desactivar el render()
+		this.setState({loaded: false})
 
-	agregarProducto() {
+		// 2) "Actualizar" o "Borrar"
+		if (!borrar) { // Si No hay que "borrar" ... entonces "actualizar"
+		/*
+            this.setState({
+                products : this.state.products.map(
+                    oldProduct => oldProduct.idProducto === theProduct.idProducto ? theProduct : oldProduct
+                )
+			}, () => {this.setState({loaded: true}) }) */
+			nuevo  = this.state.products.map(
+				oldProduct => oldProduct.idProducto === theProduct.idProducto ? theProduct : oldProduct
+			)
+		} else { // Si EFECTIVAMENTE hay que "borrar"... entonces "borrar"
+			/*
+			this.setState({
+				products : this.state.products.filter(
+					oldProduct => oldProduct.idProducto !== theProduct.idProducto
+				)
+			},() => {this.setState({loaded: true}) }) */
+			nuevo =  this.state.products.filter(
+				oldProduct => oldProduct.idProducto !== theProduct.idProducto
+			)
+		}
 
-	}
-	borrarProducto() {
+		this.setState({products: nuevo}, () => {
+			window.localStorage.setItem("_products", JSON.stringify(nuevo))//<--- Actualizo el localStorage
+			this.setState({loaded: true})
 
-	}
-	buscarProducto() {
+		})
+		// 3) Reactivar el render()
+		// this.setState({loaded: true})
 
-	}
+    }
 
 	render() {
 		/* Acá se pueden programar cosas que desemboquen en el return */
@@ -70,17 +95,16 @@ class App extends React.Component {
 			return <div>Iniciando App..</div>
 		} else {//<-- Si EFECTIVAMENTE esta cargado....
 			const losProductos = this.state.products.map(
-				(prodcut , index) => <Product item={prodcut} key={index} itemID={prodcut.idProducto} onEditarProducto={this.editarProducto} />
+				(product , index) => <Product item={product} key={index} onActualizarProducto={this.actualizarEstado} />
 			)
 			return (
 				/***************  ACÁ VAN TODOS LOS COMPONENTES   *************/   
 				<div className="App">
 					<Header title={this.state.title} slogan={this.state.slogan} />
-
-					<button onClick={this.editarProducto.bind(this)}> editar</button>
-
 					<Menu links={this.state.products} />
-					<section className="row">{losProductos}</section>
+                    <section className="container-fluid">
+                        <div className="row">{losProductos}</div>
+                    </section>
 					<Modal />
 				</div>
 				/*****************    ACÁ FUERA NADA   *************/
