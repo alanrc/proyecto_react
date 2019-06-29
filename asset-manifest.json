@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/alanrc/proyecto_react/static/js/main.d409316d.chunk.js",
+    "main.js.map": "/alanrc/proyecto_react/static/js/main.d409316d.chunk.js.map",
+    "runtime~main.js": "/alanrc/proyecto_react/static/js/runtime~main.ba110016.js",
+    "runtime~main.js.map": "/alanrc/proyecto_react/static/js/runtime~main.ba110016.js.map",
+    "static/js/2.2257cac7.chunk.js": "/alanrc/proyecto_react/static/js/2.2257cac7.chunk.js",
+    "static/js/2.2257cac7.chunk.js.map": "/alanrc/proyecto_react/static/js/2.2257cac7.chunk.js.map",
+    "index.html": "/alanrc/proyecto_react/index.html",
+    "precache-manifest.3416fa36bf93f73947b3c9bcf9cbe512.js": "/alanrc/proyecto_react/precache-manifest.3416fa36bf93f73947b3c9bcf9cbe512.js",
+    "service-worker.js": "/alanrc/proyecto_react/service-worker.js",
+    "static/media/logo.svg": "/alanrc/proyecto_react/static/media/logo.5d5d9eef.svg"
+  }
+}
